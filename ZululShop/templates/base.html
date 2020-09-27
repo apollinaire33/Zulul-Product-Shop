@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}My Site{% endblock %}</title>
+
+        <div>
+            <style>
+                ul.row
+                {
+                    height: 120px;
+                    display: inline-block;
+                    background: pink;
+                    width: 20%;
+                }
+                h1.block1
+                {
+                    font-size: 200%;
+                    color: black;
+                    text-align: center;
+                    height: 120px;
+                    display: inline-block;
+                    background: pink;
+                    width: 100%;
+                }
+                p.block2
+                {
+                    font-style: oblique;
+                    font-size: 150%;
+                    color: rgb(0, 0, 0);
+                    text-align: center;
+                    line-height: 0;
+                }
+                .block44
+                {
+                    font-size: 150%;
+                    color: rgb(255, 255, 255);
+                    text-indent: 0%;
+                    line-height: 0;
+                }
+                .block55
+                {
+                    font-size: 150%;
+                    color: rgb(255, 255, 255);
+                }
+                .block33
+                {
+                    
+                    font-size: 120%;
+                    color: rgb(255, 255, 255);
+                    
+                }
+                .leftimg {
+                    float:left; /* Выравнивание по левому краю */
+                    margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+                }
+                .rightimg  {
+                    float: right; /* Выравнивание по правому краю  */ 
+                    margin: 7px 0 7px 7px; /* Отступы вокруг картинки */
+                }
+            </style>
+        </div>
+        
+    </head>
+    <body>
+        
+        {% block content %}
+        
+        {% endblock %}
+    
+        <style>
+            body { background: url("https://cdn.wallpapersafari.com/92/83/0Jvgqp.png"); }
+        </style>
+
+    </body> 
+</html>

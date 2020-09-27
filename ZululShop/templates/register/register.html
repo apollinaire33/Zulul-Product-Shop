@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}zulul register{% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block content %} 
+
+<br><a href="{% url 'home' %}" class="block44">Home Page</a><br><br>
+
+<form method="POST" class="form-group, block33" action="{% url 'register' %}">
+    {% csrf_token %}
+    {{form|crispy}}<br>
+    About You<br><br>
+    {{profile_form|crispy}}
+    <button type="submit" class="btn btn-success">Register</button>
+
+</form>
+
+<style>
+    body { background: url("https://cdn.wallpapersafari.com/92/83/0Jvgqp.png"); }
+</style>
+
+
+{% endblock %}

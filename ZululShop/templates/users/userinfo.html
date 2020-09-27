@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}zulul info{% endblock %}
+
+{% block content %} 
+
+<br><a href="{% url 'home' %}" class="block44">Home Page</a><br><br>
+
+<form>
+    <img src="{{user_profile.avatar}}" width="300"  class="leftimg"><br>
+    <h1 class="block44">About {{user.username}}</h1><br>
+    <h1 class="block44">Real name: {{user.first_name}}&ensp;{{user.last_name}}</h1><br>
+    <h1 class="block44">Age: {{user_profile.age}}</h1><br>
+    <h1 class="block44">Location: {{user_profile.location}}</h1><br>
+    <h1 class="block44">Phone: {{user_profile.phone_number}}</h1><br><br><br><br><br><br>
+</form>
+
+<h1 class="block44">Recent products</h1>
+
+{% if products %}
+
+        {% for product in products  %}
+            <ul class="row">
+                <h1><a href="{% url 'productinfo' product.id %}">{{product.name}}</a></h1>
+                <h2>by <a href="{% url 'users' product.seller_id %}">{{product.seller}}</a></h2> 
+                <img src={{product.image}} width="250" height="250">
+                <button style="height:40px;width:75px" type="submit" class="btn btn-success">Order</button>
+            </ul>
+            
+        {% endfor %}
+
+    {% else %}
+        No products
+    {% endif %} 
+    
+{% endblock %}

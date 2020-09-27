@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}zulul catalog{% endblock %}
+
+{% block content %} 
+
+<br><a href="{% url 'home' %}" class="block44">Home Page</a><br><br>
+
+{% if product.seller_id == user_id or user_id == 1 %}
+
+    <img src="{{product.image}}" width="300"  class="leftimg"><br>
+    <h1 class="block44">{{product.name}}</h1><br>
+    <h1 class="block44">By <a href="{% url 'users' product.seller_id %}" >{{product.seller}}</a></h2><br>
+    <h1 class="block44">Price: {{product.price}}$</h1><br>
+    <h1 class="block44">Amount: {{product.amount}}</h1><br>
+    <h1 class="block44">Category: {{product.category}}</h1><br>
+    <button style="height:40px;width:75px" type="submit" class="btn btn-success">Order</button><br><br>
+    <h1 class="block55">About: {{product.description}}</h1><br><br><br><br><br><br>
+
+    <form action="{% url 'productinfo' product.id %}" method="POST">
+
+        {% csrf_token %}
+
+        <button type="submit">Delete Product</button>
+    </form>
+
+{% else %}
+
+    <img src="{{product.image}}" width="300"  class="leftimg"><br>
+    <h1 class="block44">{{product.name}}</h1><br>
+    <h1 class="block44">By <a href="{% url 'users' product.seller_id %}">{{product.seller}}</a></h2><br>
+    <h1 class="block44">Price: {{product.price}}$</h1><br>
+    <h1 class="block44">Amount: {{product.amount}}</h1><br>
+    <h1 class="block44">Category: {{product.category}}</h1><br>
+    <button style="height:40px;width:75px" type="submit" class="btn btn-success">Order</button><br><br>
+    <h1 class="block55">About: {{product.description}}</h1><br><br><br><br><br><br>
+    
+{% endif %} 
+
+{% endblock %}

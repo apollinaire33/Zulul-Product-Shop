@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}zulul catalog{% endblock %}
+
+{% block content %} 
+
+<br><a href="{% url 'home' %}" class="block44">Home Page</a><br><br>
+
+<h2 class="block44"><em>Add your new Product!</em></h2><br>
+
+<form action="{% url 'add'  %}" method="POST">
+    
+    {% csrf_token %}
+    
+    <input type="text" required placeholder="Product Name" name="name"r><br><br>
+    <textarea name="description" required="" placeholder="Product Description" cols="30" rows="5"></textarea><br><br>
+    <input type="text" required placeholder="Product Preview" name="image"><br><br>
+    <input type="number" required placeholder="Product Amount" name="amount"><br><br>
+    <input type="float" required placeholder="Product Price" name="price"><br><br>
+    <h1 class="block44">{{form}}</h1>
+    <button type="submit">Add</button>
+        
+</form>
+
+<style>
+    body { background: url("https://cdn.wallpapersafari.com/92/83/0Jvgqp.png"); }
+</style>
+
+
+
+
+{% endblock %}

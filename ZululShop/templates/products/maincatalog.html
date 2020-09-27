@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}zulul catalog{% endblock %}
+
+{% block content %} 
+
+
+
+<h1 class="block1">
+    Velkam to da Best Shop in da hole Uganda
+    <p class="block2">Zulul Shop<p>
+</h1>
+
+
+
+<form id="searchform" action="/search/" method="get">
+    <input type="text" name="q" type="text" placeholder="type to search"/>
+    <button type="button" onclick="searchform.submit()">Search</button>
+    &ensp;<a href="{% url 'add'  %}" class="block44">Add new product</a>
+    &ensp;<a href="{% url 'login'  %}" class="block44">Log in</a>
+    &ensp;<a href="{% url 'logout'  %}" class="block44">Log out</a>
+    &ensp;<a href="{% url 'myprofile' %}" class="block44">My profile</a><br><br>
+</form>
+
+<style>
+    body { background: url("https://cdn.wallpapersafari.com/92/83/0Jvgqp.png"); }
+</style>
+
+
+
+{% if products %}
+
+        {% for product in products  %}
+            <ul class="row">
+                <h1><a href="{% url 'productinfo' product.id %}">{{product.name}}</a></h1>
+                <h2>by <a href="{% url 'users' product.seller_id %}">{{product.seller}}</a></h2> 
+                <img src={{product.image}} width="250" height="250">
+                <button style="height:40px;width:130px" type="submit" class="btn btn-success">Order for {{product.price}}$</button>
+                <h2 class="block44">Remained: {{product.amount}}</h2>
+            </ul>
+            
+        {% endfor %}
+
+    {% else %}
+        <h1 class="block44">No products</h1>
+    {% endif %}   
+
+
+{% endblock %}

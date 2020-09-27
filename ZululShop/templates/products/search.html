@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Search results{% endblock %}
+
+{% block content %} 
+
+<br><a href="{% url 'home' %}" class="block44">Home Page</a><br><br>
+
+<form id="searchform" action="/search/" method="get">
+    <input type="text" name="q" type="text" placeholder="type to search"/>
+    <button type="button" onclick="searchform.submit()">Search</button>
+</form>
+
+<p class="block44">List of Products containing '{{query_string}}'</p> 
+{% if products %}
+
+        {% for product in products  %}
+            <ul class="row">
+                <h1><a href="{% url 'productinfo' product.id %}">{{product.name}}</a></h1>
+                <h2>by <a href="{% url 'users' product.seller_id %}">{{product.seller}}</a></h2> 
+                <img src={{product.image}} width="250" height="250">
+                <button style="height:40px;width:130px" type="submit" class="btn btn-success">Order for {{product.price}}$</button>
+                <h2 class="block44">Remained: {{product.amount}}</h2>
+            </ul>
+            
+        {% endfor %}
+
+    {% else %}
+        <h1 class="block44">No products</h1>
+    {% endif %}   
+
+
+    <style>
+        body { background: url("https://cdn.wallpapersafari.com/92/83/0Jvgqp.png"); }
+    </style>
+
+
+
+{% endblock %}
